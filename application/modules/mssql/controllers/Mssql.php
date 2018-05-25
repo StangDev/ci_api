@@ -73,13 +73,8 @@ class Mssql extends MX_Controller{
     if ($_POST) {
 
       		$data = json_decode($_POST['myJsonString'],true);
-          // echo "<pre>";
-          // print_r($data);
-          // exit();
       		  $this->excel = $this->load->library('PHPExcel');
-             //activate worksheet number 1
              $this->excel->setActiveSheetIndex(0);
-             //name the worksheet
              $this->excel->getActiveSheet()->setTitle('Generate');
 
              $this->excel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);

@@ -23,7 +23,7 @@
           <div class="input-group">
             <select class="custom-select" id="inputSelectAPI">
               <option selected>Choose...</option>
-              <?php $rowdata =  $this->Api_model->getListApi(); ?>
+              <?php $rowdata =  $this->Mssql_model->getListApi(); ?>
               <?php foreach ($rowdata as $key => $value):?>
                 <option value="<?=$value['SPECIFIC_NAME']?>"><?=$value['SPECIFIC_NAME']?></option>
               <?php endforeach; ?>
@@ -66,14 +66,14 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-    <script src="<?=base_url()?>assets/lib/js/jquery.multi-select.js"></script>
+    <script src="<?=base_url()?>/assets/lib/js/jquery.multi-select.js"></script>
     <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
 
       function getAPI() {
         var nameapi = $('#inputSelectAPI').val();
         var option ='';
-        $.post( "<?=base_url()?>api/getAPI",{nameapi:nameapi}, function( data ) {
+        $.post( "<?=base_url()?>/mssql/getAPI",{nameapi:nameapi}, function( data ) {
           data = $.parseJSON(data);
 
            $.each(data, function(i, item) {
@@ -89,7 +89,7 @@
       {
         var data =  $('select#my-select').val()
         var myJsonString = JSON.stringify(data);
-        $.post( "<?=base_url()?>api/apitable",{myJsonString}, function( data ) {
+        $.post( "<?=base_url()?>/mssql/getTable",{myJsonString}, function( data ) {
           data = $.parseJSON(data);
           $( "div.table-custom" ).html(data.table);
           var myJsonString = JSON.stringify(data.datajson);
