@@ -73,7 +73,8 @@ class Mssql extends MX_Controller{
     if ($_POST) {
 
       		$data = json_decode($_POST['myJsonString'],true);
-      		  $this->excel = $this->load->library('PHPExcel');
+            $this->load->library('PHPExcel');
+             $this->excel  = new PHPExcel();
              $this->excel->setActiveSheetIndex(0);
              $this->excel->getActiveSheet()->setTitle('Generate');
 
@@ -152,6 +153,7 @@ class Mssql extends MX_Controller{
                     $n++;
                   }
                 }
+                $n-=1;
       				$this->excel->getActiveSheet()->getStyle("A1:A".$n)->applyFromArray($BStyle);
       				$this->excel->getActiveSheet()->getStyle("B1:B".$n)->applyFromArray($BStyle);
       				$this->excel->getActiveSheet()->getStyle("C1:C".$n)->applyFromArray($BStyle);

@@ -118,3 +118,5 @@ $db['mssql'] = array(
     'failover' => array(),
     'save_queries' => TRUE
 );
+
+#oracle pass : $Pass1234

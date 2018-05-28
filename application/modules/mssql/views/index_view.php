@@ -59,7 +59,7 @@
 
       </div>
   </div>
-  <form id="formpost" class="" action="<?=base_url()?>api/excel" method="post">
+  <form id="formpost" class="" action="<?=base_url()?>/mssql/getExcel" method="post">
     <input type="text" name="myJsonString" value="" id="myJsonString" hidden>
   </form>
 </div>
