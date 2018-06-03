@@ -122,7 +122,7 @@ $db['mssql'] = array(
 #oracle pass : admin1234
 
 $db['oracle'] = array(
-    'hostname' => '192.168.1.23/xe',
+    'hostname' => 'localhost:1521/xe',
     'username' => 'system',
     'password' => 'oracle',
     //'database' => '',

@@ -42,7 +42,21 @@
     </div>
     <button id="btnGen" type="button" class="btn btn-primary btn-lg float-right" onclick="gen()" >Generate</button>
 </div>
-
+<div class="modal fade" id="UrlModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">URL</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+    </div>
+  </div>
+</div>
 </body>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
@@ -61,7 +75,6 @@
         var full ='';
         $.post( "<?=base_url()?>/oracle/getAPI",{nameapi:nameapi}, function( data ) {
             data = $.parseJSON(data);
-            console.log(data);
             nav += '<nav><div class="nav nav-tabs" id="nav-tab" role="tablist"> ';
             body += '<div class="tab-content" id="nav-tabContent">';
            $.each(data, function(i,key) {
@@ -88,8 +101,9 @@
       function gen() {
         var nameapi = $('#inputSelectAPI').val();
         $.post( "<?=base_url()?>/oracle/generate",{nameapi:nameapi}, function( data ) {
-            data = $.parseJSON(data);
             console.log(data);
+             $( "div.modal-body").html('<a href="<?= base_url() ?>oracle_g/" ><?= base_url() ?>oracle_g/</a>');
+            $('#UrlModel').modal('show')
         });
       }
     </script>
